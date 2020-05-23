@@ -17,9 +17,9 @@
 "if" 							return K_if; 
 "else" 							return K_else; 
 "while" 						return K_while; 								
-[a-zA-Z_][a-zA-Z0-9_]*          { yylval.string = new std::string(yytext, yyleng); return ID; }
-[0-9]*							{ yylval.integer = atoi(yytext); return NUMBER; }
-[0-9]*[.0-9]+					{ yylval.double = atoi(yytext); return DOUBLE; }
+[a-zA-Z_][a-zA-Z0-9_]*          return ID;
+[0-9]*							return NUMBER;
+[0-9]*[.0-9]+				    return DOUBLE;
 "!"                             return Uop_NOT;
 "+"   							return Bop_PLUS;
 "-"                       		return Bop_MINUS;

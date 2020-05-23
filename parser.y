@@ -55,8 +55,8 @@ VarDeclList:
         |;
 
 VarDecl:
-         Type ID {$$.a = regs[$2.a]}
-        |Type ID BRACE_LCUV K_int BRACE_RCUV {}
+         Type ID
+        |Type ID BRACE_LCUV K_int BRACE_RCUV
         ;
 
 Type:

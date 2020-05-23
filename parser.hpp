@@ -56,7 +56,7 @@ extern int yydebug;
     K_else = 266,
     K_while = 267,
     ID = 268,
-    INT = 269,
+    NUMBER = 269,
     DOUBLE = 270,
     EQ = 271,
     Uop_NOT = 272,
