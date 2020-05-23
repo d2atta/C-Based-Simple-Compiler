@@ -19,7 +19,7 @@
 %token K_else
 %token K_while
 %token ID
-%token INT
+%token NUMBER
 %token DOUBLE
 %token EQ
 %token Uop_NOT
@@ -44,7 +44,6 @@
 %token End_Delimeter
 
 %start Program
-
 %%
 
 Program:
@@ -56,10 +55,15 @@ VarDeclList:
         |;
 
 VarDecl:
-         Type ID
-        |Type ID BRACE_LCUV K_int BRACE_RCUV
+         Type ID {$$.a = regs[$2.a]}
+        |Type ID BRACE_LCUV K_int BRACE_RCUV {}
         ;
 
+Type:
+         K_int
+        |K_char
+        ;
+    
 FunDeclList:
          FunDecl
         |FunDecl FunDeclList
@@ -87,11 +91,6 @@ Block:
        BRACE_LCUR VarDeclList StmtList BRACE_RCUR
        ;
 
-Type:
-         K_int
-        |K_char
-        ;
-    
 StmtList:
         Stmt
         |Stmt StmtList
@@ -111,8 +110,8 @@ Stmt:
 Expr:
         Primary
         |UnaryOp Expr Expr
-        |BinOp Expr ID EQ
-        |Expr
+        |BinOp Expr ID EQ {}
+        |Expr 
         |ID BRACE_LSQ Expr BRACE_RSQ EQ Expr
         ; 
 
