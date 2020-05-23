@@ -2,8 +2,6 @@
 	#include<stdio.h>
 	#include<string.h>
 	#include "parser.hpp"
-
-   	extern int yylval;
 	extern "C" int yywrap() { }
 %}
 
@@ -19,9 +17,9 @@
 "if" 							return K_if; 
 "else" 							return K_else; 
 "while" 						return K_while; 								
-[a-zA-Z_][a-zA-Z0-9_]*          { yylval = yytext[0] - 'a'; return ID; }
-[0-9]*							{ yylval = atoi(yytext); return INT; }
-[0-9]*[.0-9]+					{ yylval = atoi(yytext); return DOUBLE; }
+[a-zA-Z_][a-zA-Z0-9_]*          { yylval.string = new std::string(yytext, yyleng); return ID; }
+[0-9]*							{ yylval.integer = atoi(yytext); return NUMBER; }
+[0-9]*[.0-9]+					{ yylval.double = atoi(yytext); return DOUBLE; }
 "!"                             return Uop_NOT;
 "+"   							return Bop_PLUS;
 "-"                       		return Bop_MINUS;
