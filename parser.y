@@ -153,5 +153,6 @@ BinOp:
 %%
 int main(void) {
  yyparse();
+ printf("Parsing Done. The program satisfied the Grammar.");
  return 0;
 } 
