@@ -3,7 +3,7 @@
  It is a Minor Project of 6th Sem of KIIT. We are building a toy compiler based on c in lex and yacc.
  We took a unambiguous grammar for our parsing. Then we identified the keywords and identifiers it will require to parse the input file.
  We made the flex program and linked it with bison parser to parse the given peogram.  
- ### colaborator:
+ ### collaborator:
  + Debarghya Datta - Made the bison program.
  + Nabanita Saha - Made the SRS documents.
  + Diya Gangopadhyay - Helped in structuring the grammar and made the DFD.
