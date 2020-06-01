@@ -1,9 +1,11 @@
 %{
         #include<stdio.h>
         extern char yylex();
+        int flag =0;
         void yyerror(const char *s) 
         { 
         printf("ERROR: %sn", s); 
+        flag = 1;
         }
 %}
 
@@ -153,6 +155,6 @@ BinOp:
 %%
 int main(void) {
  yyparse();
- printf("Parsing Done. The program satisfied the Grammar.");
- return 0;
+ if(flag == 0)
+        printf("Parsing Done. The program satisfied the Grammar.");
 } 
